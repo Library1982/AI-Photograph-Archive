@@ -1,0 +1,21 @@
+# Free presentation environment: uploads are TEMPORARY.
+# For a durable pilot, use a paid service and mount a persistent disk at /app/data.
+services:
+  - type: web
+    name: ai-photo-archive-demo
+    runtime: docker
+    plan: free
+    healthCheckPath: /health
+    envVars:
+      - key: APP_PASSWORD
+        sync: false
+      - key: SESSION_SECRET
+        generateValue: true
+      - key: COOKIE_SECURE
+        value: "true"
+      - key: TEMPORARY_STORAGE
+        value: "true"
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: OPENAI_MODEL
+        sync: false
